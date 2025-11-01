@@ -10,7 +10,7 @@ const Products = ({ handleCardUpdate }) => {
             .then((data) => setProducts(data))
     }, [])
 
-    console.log(products);
+    // console.log(products);
 
     return (
         <div className='grid grid-cols-3 gap-x-5 gap-y-10 justify-items-center my-10'>

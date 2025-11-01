@@ -1,14 +1,16 @@
 import React from 'react';
 
-const Cart = ({carts}) => {
-    console.log(carts);
+const Cart = ({ carts }) => {
+    // console.log(carts);
     return (
         <div>
-            <h1>Here are your added Products</h1>
+            <h1>Products : {carts.length}</h1>
             <div>
-                {
-                    carts.map((cart) => <ul className='p-5'><li>{cart.name}</li></ul>)
-                }
+                <ul>
+                    {
+                        carts?.map((cart) => <li key={cart.id}>{cart.name}</li>)
+                    }
+                </ul>
             </div>
         </div>
     );

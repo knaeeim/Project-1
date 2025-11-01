@@ -7,17 +7,26 @@ function App() {
   const [carts, setCarts]  = useState([])
   
   const handleCardUpdate = (product) => {
-      setCarts(prev => [...prev, product])
+      setCarts((prev) => {
+        const exists = prev.some(f => f.id === product.id);
+        
+        if(exists){
+          return prev.map((p) => p.id === product.id ? {...p, cartQuantity : (p.cartQuantity || 0) + 1} : p)
+        }
+        else{
+          return [...prev, {...product, cartQuantity : 1}]
+        }
+      })
   }
 
   console.log(carts);
 
   return (
-    <div className='flex gap-5'>
-      <div className='w-[70%] border-2'>
+    <div className='flex gap-5 m-10'>
+      <div className='w-[70%] border-2 p-5'>
         <Products handleCardUpdate={handleCardUpdate}></Products>
       </div>
-      <div className='w-[30%] border-2'>
+      <div className='w-[30%] border-2 p-5'>
         <Cart carts={carts}></Cart>
       </div>
     </div>
